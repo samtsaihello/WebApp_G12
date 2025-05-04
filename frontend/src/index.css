@@ -20,3 +20,17 @@ body {
   height: 100%;
 }
 
+h1{
+  /* font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 30px; */
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+}
+
+h2{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+}
