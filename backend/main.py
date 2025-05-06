@@ -7,6 +7,7 @@ import os
 from PIL import Image
 import numpy as np
 import logging
+from colorthief import ColorThief
 
 app = Flask(__name__)
 CORS(app)
@@ -34,7 +35,12 @@ def get_palette():
     # 使用 PaletteExtractor 提取顏色
     extractor = PaletteExtractor(temp_path, k=5)
     colors = extractor.extract_palette()
-
+    # 或者
+    # 使用 ColorThief 提取顏色
+    color_thief = ColorThief("temp.jpg")
+    dominant_color = color_thief.get_color(quality=10)
+    palette = color_thief.get_palette(color_count=5, quality=10)
+    colors = [list(color) for color in palette]
     # 刪除臨時圖片檔案
     os.remove(temp_path)
 
