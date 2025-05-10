@@ -64,7 +64,7 @@ function Navbar() {
             <div className="mt-0 flex justify-end bg-[#313236]">
                 <Button size="large" color="primary" className="!text-amber-50 !ml-auto" onClick={() => navigate('/')}> Home </Button>
                 <Button size="large" color="primary" className="!text-amber-50" onClick={() => navigate('/about')}> About </Button>
-                <Button size="large" color="primary" className="!text-amber-50" onClick={() => navigate('/palette')}> Palette </Button>
+                <Button size="large" color="primary" className="!text-amber-50" onClick={() => navigate('/pal')}> Palette </Button>
                 {(loggedIn)? 
                 <Button 
                     size="large" 
