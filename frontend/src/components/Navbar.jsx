@@ -61,7 +61,7 @@ function Navbar() {
 
     return (
         <>
-            <div className="mt-0 flex justify-end bg-indigo-400">
+            <div className="mt-0 flex justify-end bg-[#313236]">
                 <Button size="large" color="primary" className="!text-amber-50 !ml-auto" onClick={() => navigate('/')}> Home </Button>
                 <Button size="large" color="primary" className="!text-amber-50" onClick={() => navigate('/about')}> About </Button>
                 <Button size="large" color="primary" className="!text-amber-50" onClick={() => navigate('/palette')}> Palette </Button>
@@ -89,17 +89,17 @@ function Navbar() {
                     anchorEl={menuOpen}
                     onClose={handlemenuClose}
                 >
-                    <MenuItem onClick={handlemenuClose1}>更改email或密碼</MenuItem>
-                    <MenuItem onClick={handlemenuClose2}>查看過去紀錄</MenuItem>
-                    <MenuItem onClick={handlemenuClose3}>登出</MenuItem>
+                    <MenuItem onClick={handlemenuClose1}>Change Info</MenuItem>
+                    <MenuItem onClick={handlemenuClose2}>History</MenuItem>
+                    <MenuItem onClick={handlemenuClose3}>Logout</MenuItem>
                 </Menu>
                 <Dialog open={open} onClose={handleClickAway}>
-                    <DialogTitle>{(login) ? '登入' : '註冊'}</DialogTitle>
+                    <DialogTitle>{(login) ? 'Login' : 'Register'}</DialogTitle>
                     <DialogContent>
                     {(login) ? <></> : <TextField
                         autoFocus
                         margin="dense"
-                        label="名字"
+                        label="Name"
                         type="text"
                         fullWidth
                         variant="standard"
@@ -107,21 +107,21 @@ function Navbar() {
                     <TextField
                         autoFocus
                         margin="dense"
-                        label="帳號 (email)"
+                        label="Account (email)"
                         type="email"
                         fullWidth
                         variant="standard"
                     />
                     <TextField
                         margin="dense"
-                        label="密碼"
+                        label="Password"
                         type="password"
                         fullWidth
                         variant="standard"
                     />
                     {(login) ? <></> :<TextField
                         margin="dense"
-                        label="確認密碼"
+                        label="Confirm Password"
                         type="password"
                         fullWidth
                         variant="standard"
@@ -136,12 +136,12 @@ function Navbar() {
                     }}
                     onClick={() => {setLogin(!login); console.log(login)}}
                     >
-                    {(login)?'沒有帳號？註冊' : '已經有帳號？登入'}
+                    {(login)?'No account? Register!' : 'Already have an account? Login!'}
                     </Typography>
                     </DialogContent>
                     <DialogActions>
-                    <Button onClick={handleClose}>取消</Button>
-                    <Button onClick={handleRegister}>{(login)? '登入' : '註冊'}</Button>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleRegister}>{(login)? 'Login' : 'Register'}</Button>
                     </DialogActions>
                 </Dialog>
             </div>
