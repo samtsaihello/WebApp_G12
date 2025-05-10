@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
@@ -9,10 +9,10 @@ function Info() {
 
     return (
         <>
-            <div className="p-2 w-full bg-[#3b3e48] h-11/12 text-amber-50 flex flex-col items-center justify-center">
+            <div className="p-2 w-full bg-[#3b3e48] h-11/12 text-amber-50 flex flex-col items-center">
                 <h1 className="ml-2">User Info</h1>
-                <div className="flex w-full">
-                    <div className="mt-6 ml-10 border-r-white border-r-2">
+                <div className="flex w-full justify-evenly justify-center">
+                    <div className="mt-6">
                         <Button 
                             component="label" 
                             onClick={() => navigate('/info/change')}
@@ -43,7 +43,8 @@ function Info() {
                             startIcon={<HistoryIcon />}
                         >history</Button>
                     </div>
-                    <div className="mt-6 ml-10 w-3/4">
+                    {/* <Divider orientation="vertical" flexItem className="bg-white" sx={{ height: 120, borderColor: '#fff', mx: 2 }} /> */}
+                    <div className="mt-6 ml-10 w-2/3">
                         <Outlet />
                     </div>
                 </div>

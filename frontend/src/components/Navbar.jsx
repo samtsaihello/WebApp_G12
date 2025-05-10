@@ -89,7 +89,7 @@ function Navbar() {
                     anchorEl={menuOpen}
                     onClose={handlemenuClose}
                 >
-                    <MenuItem onClick={handlemenuClose1}>Change Info</MenuItem>
+                    <MenuItem onClick={handlemenuClose1}>Edit Info</MenuItem>
                     <MenuItem onClick={handlemenuClose2}>History</MenuItem>
                     <MenuItem onClick={handlemenuClose3}>Logout</MenuItem>
                 </Menu>
@@ -134,7 +134,7 @@ function Navbar() {
                         cursor: 'pointer',
                         '&:hover': { textDecoration: 'underline' },
                     }}
-                    onClick={() => {setLogin(!login); console.log(login)}}
+                    onClick={() => {setLogin(!login)}}
                     >
                     {(login)?'No account? Register!' : 'Already have an account? Login!'}
                     </Typography>

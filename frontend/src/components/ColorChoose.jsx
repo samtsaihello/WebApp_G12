@@ -1,82 +1,5 @@
-// import React, { useState } from "react";
-// import {
-//   Autocomplete,
-//   TextField,
-//   Checkbox,
-//   Chip,
-//   Box,
-// } from "@mui/material";
-
-// // 定義選項資料
-// const colorOptions = [
-//   { label: "Red", color: "#f44336" },
-//   { label: "Blue", color: "#2196f3" },
-//   { label: "Green", color: "#4caf50" },
-//   { label: "Yellow", color: "#ffeb3b" },
-//   { label: "Purple", color: "#9c27b0" },
-// ];
-
-// export default function ColorMultiSelect() {
-//   const [selectedOptions, setSelectedOptions] = useState([]);
-
-//   return (
-//     <Autocomplete
-//       className="w-1/2"
-//       multiple
-//       disableCloseOnSelect
-//       options={colorOptions}
-//       getOptionLabel={(option) => option.label}
-//       value={selectedOptions}
-//       onChange={(event, newValue) => {
-//         setSelectedOptions(newValue);
-//       }}
-//       isOptionEqualToValue={(option, value) => option.label === value.label}
-//       renderOption={(props, option, { selected }) => (
-//         <li {...props}>
-//           <Checkbox
-//             style={{ marginRight: 8 }}
-//             checked={selected}
-//           />
-//           <Box
-//             sx={{
-//               width: 14,
-//               height: 14,
-//               backgroundColor: option.color,
-//               borderRadius: "50%",
-//               marginRight: 1,
-//             }}
-//           />
-//           {option.label}
-//         </li>
-//       )}
-//       renderTags={(value, getTagProps) =>
-//         value.map((option, index) => (
-//           <Chip
-//             key={option.label}
-//             label={option.label}
-//             {...getTagProps({ index })}
-//             sx={{
-//               backgroundColor: option.color,
-//               color: "#fff",
-//             }}
-//           />
-//         ))
-//       }
-//       renderInput={(params) => (
-//         <TextField
-//           {...params}
-//           variant="outlined"
-//           label="選擇顏色"
-//           placeholder="請選擇"
-//           className="w-1/2"
-//         />
-//       )}
-//     />
-//   );
-// }
-
 import React from "react";
-import { ToggleButtonGroup, ToggleButton } from "@mui/material";
+import { ToggleButtonGroup, ToggleButton, Tooltip } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import CheckIcon from "@mui/icons-material/Check";
@@ -117,15 +40,27 @@ export default function ColorToggleSelect({ colorOptions = [], onSelectColors = 
       aria-label="color selection"
       sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}
     >
-      {colorOptions.map((option) => (
+      {colorOptions.map((opt) => (
+        <Tooltip key={opt.color} title={opt.color} arrow>
+        {/* Tooltip 必須包一層能觸發 hover/focus 的元素 */}
         <ColorToggleButton
-          key={option.color}
-          value={option.color}
-          selectedcolor={option.color}
-          aria-label={option.color}
+          value={opt.color}
+          selectedcolor={opt.color}
+          aria-label={opt.color}
+          sx={{
+            width: 40,
+            height: 40,
+            bgcolor: opt.color,
+            // border: "1px solid #ccc",
+            "&:hover": {
+            //   borderColor: "#fff",
+              boxShadow: "0 0 0 2px rgba(255,255,255,0.5)",
+            },
+          }}
         >
-          {selectedColors.includes(option.color) && <CheckIcon />}
+          {selectedColors.includes(opt.color) && <CheckIcon />}
         </ColorToggleButton>
+      </Tooltip>
       ))}
     </ToggleButtonGroup>
   );

@@ -21,10 +21,7 @@ function Palette(){
     const [selectedColors, setSelectedColors] = useState([]);
     const handleSelectColors = useCallback((newSelectedColors) => {
         setSelectedColors(newSelectedColors);
-        // console.log(selectedColors)
     },[]);
-
-    console.log(selectedColors)
 
     return (
         <>
