@@ -8,6 +8,8 @@ from PIL import Image
 import numpy as np
 import logging
 from colorthief import ColorThief
+import json
+
 
 app = Flask(__name__)
 CORS(app)
@@ -31,15 +33,21 @@ def get_palette():
     # 儲存圖片檔案
     temp_path = "temp.jpg"
     image.save(temp_path)
+    
+    k_str = request.form.get('k', '5')
+    try:
+        k = int(k_str)
+    except ValueError:
+        return jsonify({"error": "Invalid value for k, must be an integer"}), 400
 
     # 使用 PaletteExtractor 提取顏色
-    extractor = PaletteExtractor(temp_path, k=5)
-    colors = extractor.extract_palette()
+    # extractor = PaletteExtractor(temp_path, k=5)
+    # colors = extractor.extract_palette()
     # 或者
     # 使用 ColorThief 提取顏色
     color_thief = ColorThief("temp.jpg")
     dominant_color = color_thief.get_color(quality=10)
-    palette = color_thief.get_palette(color_count=5, quality=10)
+    palette = color_thief.get_palette(color_count=k, quality=10)
     colors = [list(color) for color in palette]
     # 刪除臨時圖片檔案
     os.remove(temp_path)
@@ -58,10 +66,12 @@ def recolor_image():
     image = request.files['image']
     palette = request.form['palette']
     try:
-        # Parse palette string (e.g., "61,80,34;144,104,127;...")
-        palette = [list(map(int, color.split(','))) for color in palette.split(';')]
-    except ValueError:
-        return jsonify({"error": "Invalid palette format. Expected format: R,G,B;R,G,B;..."}), 400
+        # palette should be like: [[61,80,34], [144,104,127], [179,145,120]]
+        palette = json.loads(palette)
+        if not (isinstance(palette, list) and all(isinstance(c, list) and len(c) == 3 for c in palette)):
+            raise ValueError("Invalid palette format")
+    except Exception:
+        return jsonify({"error": "Invalid palette format. Expected JSON: [[R,G,B], [R,G,B], ...]"}), 400
 
     # Save the uploaded image temporarily
     temp_path = "temp_image.jpg"
