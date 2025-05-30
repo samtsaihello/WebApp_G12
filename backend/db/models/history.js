@@ -1,31 +1,25 @@
 import mongoose from "mongoose";
 
+const mongoose = require("mongoose");
 const historySchema = new mongoose.Schema(
   {
-    userName: {
+    user: {
       type: String,
       required: true,
+      ref: "userName",
     },
-    historyName: {
+    description: {
       type: String,
       required: true,
     },
     color: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "List",
+      type: [String],
       required: true,
     },
+    
   },
   {
     timestamps: true,
-    toJSON: {
-      transform: (_, ret) => {
-        ret.id = ret._id.toString();
-        ret.list_id = ret.list_id.toString();
-        delete ret._id;
-        delete ret.__v;
-      },
-    },
   },
 );
 

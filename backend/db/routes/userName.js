@@ -1,25 +1,10 @@
 // import {} from "../controllers/lists";
-import {
-  createCard,
-  deleteCard,
-  getCard,
-  getCards,
-  updateCard,
-} from "../controllers/cards";
+import {getUserName, logIn} from "../controllers/userName.js";
 import express from "express";
 
 const router = express.Router();
 
-// GET /api/cards
-router.get("/", getCards);
-// GET /api/cards/:id
-router.get("/:id", getCard);
-// POST /api/cards
-router.post("/", createCard);
-// PUT /api/cards/:id
-router.put("/:id", updateCard);
-// DELETE /api/cards/:id
-router.delete("/:id", deleteCard);
+router.post("/", getUserName);
+router.get("/login", logIn);
 
-// export the router
 export default router;

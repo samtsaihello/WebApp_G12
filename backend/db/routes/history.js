@@ -1,24 +1,10 @@
-import {
-  createList,
-  getLists,
-  getList,
-  updateList,
-  deleteList,
-} from "../controllers/lists";
+import {storeHistory, getHistory} from "../controllers/history.js";
 import express from "express";
 
 const router = express.Router();
 
-// GET /api/lists
-router.get("/", getLists);
-// GET /api/lists/:id
-router.get("/:id", getList);
-// POST /api/lists
-router.post("/", createList);
-// PUT /api/lists/:id
-router.put("/:id", updateList);
-// DELETE /api/lists/:id
-router.delete("/:id", deleteList);
+router.post("/", storeHistory); // Store a new history
+router.get("/", getHistory); // Output all history of a user
 
 // export the router
 export default router;
