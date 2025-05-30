@@ -9,6 +9,7 @@ import numpy as np
 import logging
 from colorthief import ColorThief
 import json
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -18,9 +19,9 @@ CORS(app)
 logging.basicConfig(level=logging.DEBUG, filename='recolor.log', filemode='a',
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
-STATIC_DIR = os.path.join(app.root_path, 'static')
-if not os.path.exists(STATIC_DIR):
-    os.makedirs(STATIC_DIR)
+SAVE_DIR = os.path.join(app.root_path, 'static/outputs/')
+if not os.path.exists(SAVE_DIR):
+    os.makedirs(SAVE_DIR)
 
 @app.route('/palette', methods=['POST'])
 def get_palette():
@@ -95,8 +96,9 @@ def recolor_image():
             logging.debug("重上色完成")
 
         # Save the processed image
-        output_filename = "output_image.jpg"
-        output_path = os.path.join(STATIC_DIR, output_filename)
+        timestamp = datetime.now().strftime("%m%d_%H%M")
+        output_filename = f"{timestamp}.jpg"
+        output_path = os.path.join(SAVE_DIR, output_filename)
         pil_img = Image.fromarray(mapped_img)
         pil_img.save(output_path)
         logging.debug(f"輸出圖像儲存至 {output_path}")
@@ -118,4 +120,4 @@ def recolor_image():
         return jsonify({"error": f"Failed to process image: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    app.run(port=8080, debug=True)
+    app.run(debug=True)

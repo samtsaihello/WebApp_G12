@@ -36,10 +36,16 @@ class Palette:
         # Process each pixel
         for i in range(height):
             for j in range(width):
+                # 檢查是否近似白色
+                pixel_rgb = input_img[i, j]
+                if np.all(pixel_rgb > 250):  # 可視需求調整成 >245 或 >240
+                    output_img[i, j] = pixel_rgb
+                    continue
+
                 # Get LAB values of the input pixel
                 pixel_lab = input_lab[i, j]  # [L, A, B]
-                pixel_l = pixel_lab[0]  # Lightness (0 to 100)
-                pixel_ab = pixel_lab[1:]  # Color components (A, B)
+                pixel_l = pixel_lab[0]      # Lightness
+                pixel_ab = pixel_lab[1:]    # A, B
 
                 # Normalize lightness to [0, 1] for compatibility with original logic
                 normalized_l = pixel_l / 100.0
