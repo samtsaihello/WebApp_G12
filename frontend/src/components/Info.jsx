@@ -10,9 +10,9 @@ function Info() {
     return (
         <>
             <div className="p-2 w-full bg-[#3b3e48] h-11/12 text-amber-50 flex flex-col items-center">
-                <h1 className="ml-2">User Info</h1>
+                <h1 className="ml-2 mt-2">User Info</h1>
                 <div className="flex w-full justify-evenly">
-                    <div className="mt-6">
+                    <div className="mt-6" id="info-container">
                         <Button 
                             component="label" 
                             onClick={() => navigate('/info/change')}

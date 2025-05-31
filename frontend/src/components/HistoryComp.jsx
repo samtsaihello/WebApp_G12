@@ -7,8 +7,9 @@ export default function HistoryComp({name, color = [], date}) {
     return (
         <>
             <div className="w-5/6 bg-gray-600 rounded-lg p-3 m-2">
-                <div className="flex mb-1">
-                    <h2 className="mr-4">{name}</h2>  <h2>{date}</h2>
+                <div className="flex mb-2">
+                    <h2 className="mr-4">{name}</h2>  
+                    <h2 id="date">{date}</h2>
                 </div>
                 <Box sx={{ display: 'flex', gap: 1 }}>
                     {color.map((color) => (

@@ -11,23 +11,38 @@ import Palette from './components/Palette.jsx';
 import Info from './components/Info.jsx';
 import Change from './components/Change.jsx';
 import History from './components/History.jsx';
+import { useCallback, useState } from 'react';
 
 function App() {
   // const [count, setCount] = useState(0)
+  const [account, setAccount] = useState("");
+  const [name, setName] = useState("");
+
+  const handleGetAccount = useCallback((account) => {
+    setAccount(account);
+  },[]);
+
+  const handleGetName = useCallback((name) => {
+    setName(name);
+  }
+,[]);
 
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/pal" element={<Palette />} />
-        <Route path="/info" element={<Info />} >
-          <Route path="change" element={<Change />} />
-          <Route path="history" element={<History />} />
-        </Route> 
-      </Routes>
+        <Navbar inputname={name} onSetAccount={handleGetAccount} onSetName={handleGetName} />
+        <div className="pt-12  text-white overflow-y-auto w-full h-screen">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/pal" element={<Palette account={account} />} />
+          <Route path="/info" element={<Info />} >
+            <Route path="change" element={<Change name={name} account={account} onSetName={handleGetName} />} />
+            <Route path="history" element={<History user={account} />} />
+          </Route> 
+        </Routes>
+        </div>
     </>
+    
   )
 }
 

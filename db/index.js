@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import userNameRoutes from "./routes/userName.js";
 import historyRoutes from "./routes/history.js";
 // We use a custom env.ts file to make sure that all the environment variables are in correct types.
-import { env } from "./utils/env";
+import { env } from "./utils/env.js";
 
 const app = express();
 app.use(bodyParser.json());

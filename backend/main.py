@@ -109,7 +109,7 @@ def recolor_image():
 
         return jsonify({
             "message": "Image recolored successfully",
-            "output_image_path": f"static/{output_filename}"
+            "output_image_path": f"static/outputs/{output_filename}"
         })
 
     except Exception as e:
@@ -120,4 +120,4 @@ def recolor_image():
         return jsonify({"error": f"Failed to process image: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port = 8080)

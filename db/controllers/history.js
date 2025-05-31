@@ -1,5 +1,5 @@
 import history from "../models/history.js";
-import { genericErrorHandler } from "../utils/errors";
+import { genericErrorHandler } from "../utils/errors.js";
 
 // Store a new history
 export const storeHistory = async (req, res) => {
@@ -17,8 +17,8 @@ export const storeHistory = async (req, res) => {
 // Output all history of a user
 export const getHistory = async (req, res) => {
   try {
-    const { user } = req.body;
-    const dbHistory = await history.find({ user }).populate("userName");
+    const { user } = req.params;
+    const dbHistory = await history.find({ user });
     if (!dbHistory || dbHistory.length === 0) {
       return res.status(404).json({ error: "No history found." });
     }

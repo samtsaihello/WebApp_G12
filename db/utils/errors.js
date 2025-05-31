@@ -1,7 +1,6 @@
-import type { Response } from "express";
 import { MongooseError } from "mongoose";
 
-export const genericErrorHandler = (error: unknown, res: Response) => {
+export const genericErrorHandler = (error, res) => {
   console.error(error);
 
   // Check the type of error
