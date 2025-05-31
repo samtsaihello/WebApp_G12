@@ -92,14 +92,13 @@ def recolor_image():
             recolor_palette = Palette(palette)
 
             # Recolor the RGB image using the Palette
-            mapped_img = recolor_palette.transform(img_array)
+            pil_img = recolor_palette.transform(img_array)
             logging.debug("重上色完成")
 
         # Save the processed image
         timestamp = datetime.now().strftime("%m%d_%H%M")
-        output_filename = f"{timestamp}.jpg"
+        output_filename = f"{timestamp}.png"
         output_path = os.path.join(SAVE_DIR, output_filename)
-        pil_img = Image.fromarray(mapped_img)
         pil_img.save(output_path)
         logging.debug(f"輸出圖像儲存至 {output_path}")
 

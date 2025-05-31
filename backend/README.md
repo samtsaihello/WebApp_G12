@@ -25,7 +25,7 @@
 
 **範例請求**：
 ```bash
-curl -X POST http://localhost:5000/palette \
+curl -X POST http://localhost:8080/palette \
 -F "image=@your_image.jpg" \
 -F "k=6"
 ```
@@ -58,7 +58,7 @@ curl -X POST http://localhost:5000/palette \
 
 **範例請求**：
 ```bash
-curl -X POST http://localhost:5000/recolor \
+curl -X POST http://localhost:8080/recolor \
 -F "image=@your_image.jpg" \
 -F "palette=[[61,80,34],[144,104,127],[179,145,120]]"
 ```
