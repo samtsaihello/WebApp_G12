@@ -1,6 +1,6 @@
 import ReactCompareImage from "react-compare-image";
 // import colored from '../assets/download(1).jpg';
-import colored from '../assets/0531_1132.jpg'
+import colored from '../assets/0531_1618.jpg'
 import gray from '../assets/IMG_5237.PNG';
 import { useState } from "react";
 import { Box, Slider } from "@mui/material";
@@ -16,10 +16,10 @@ export default function ColorCompare() {
 //   );
   const [value, setValue] = useState(50);           // % from 0-100
 //   const containerRef = useRef(null);
-  const height = 300
+  const height = "100%"; // containerRef.current?.clientHeight || "100%";
 
   return (
-    <Box sx={{ position: "relative", width: "100%", maxWidth: 500 }}>
+    <Box sx={{ position: "relative", width: "100%", maxWidth: 700 }}>
       {/* 底層灰階 */}
       <img
         src={gray}
