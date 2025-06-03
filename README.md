@@ -18,7 +18,10 @@ npm run dev
 cd backend
 python3 main.py
 ```
-- If you meet some errors, paste them online and download the corresponding extension.
+- To install dependencies, type the following command.
+```bash
+pip install -r requirement.txt
+```
 
 ### Run Database
 ```bash
@@ -30,4 +33,4 @@ npm install
 node index.js
 ```
 
-After finishing all the instructions above, you will be able to run this page in localhost:5173!!!
+After finishing all the instructions above, you will be able to run this page on localhost:5173!!!

@@ -28,6 +28,7 @@ export const logIn = async (req, res) => {
   }
 };
 
+// Update user name
 export const updateUserName = async (req, res) => {
   try {
     const { name, account, passWord } = req.body;
