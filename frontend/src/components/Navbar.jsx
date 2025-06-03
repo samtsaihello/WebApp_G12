@@ -164,86 +164,32 @@ function Navbar({inputname, onSetAccount, onSetName}) {
 
     return (
         <>
-            {/* <div className="fixed mt-0 flex justify-end bg-[#313236] w-full z-50 h-12"> */}
-                {/* <Button size="large" color="primary" className="!text-amber-50 !ml-auto" onClick={() => navigate('/')}> Home </Button>
-                <Button size="large" color="primary" className="!text-amber-50" onClick={() => navigate('/about')}> About </Button>
-                <Button size="large" color="primary" className="!text-amber-50" onClick={() => navigate('/pal')}> Palette </Button>
+            <div className="fixed mt-0 flex justify-end bg-[#313236] w-full z-50 h-12">
+                <Button className="!w-1/4" onClick={() => navigate('/')}>
+                    <h3 className="ml-2 mr-auto mt-1">Palette Genie</h3>
+                </Button>
+                <Button size="large" color="primary" className="!text-amber-50 !ml-auto !w-1/18" onClick={() => navigate('/')}> Home </Button>
+                <Button size="large" color="primary" className="!text-amber-50 !w-1/18" onClick={() => navigate('/about')}> About </Button>
+                <Button size="large" color="primary" className="!text-amber-50 !w-1/18" onClick={() => navigate('/pal')}> Palette </Button>
                 {(loggedIn)? 
                 <Button 
                     size="large" 
                     color="primary" 
-                    className="!text-amber-50" 
+                    className="!text-amber-50 !w-1/12" 
                     startIcon={<LogoutIcon/>}
                     onClick={(event) => {
                         setMenuOpen(event.currentTarget);
                     }}
-                > 名字 </Button>
+                > {inputname} </Button>
                 : <Button 
                     size="large" 
                     color="primary" 
-                    className="!text-amber-50" 
+                    className="!text-amber-50 !w-1/12" 
                     startIcon={<AccountCircleIcon/>}
                     onClick={() => {
                         setOpen(true)
                     }}
-                > Login </Button>} */}
-                <AppBar position="fixed" sx={{ bgcolor: '#313236', height: '48px' }}>
-                    <Toolbar sx={{ justifyContent: 'space-between', minHeight: '48px !important' }}>
-                    {isMobile ? (
-                        <IconButton onClick={() => setDrawerOpen(true)} color="inherit">
-                        <MenuIcon />
-                        </IconButton>
-                    ) : (
-                        <div className="flex ml-auto space-x-4">
-                        {menuItems.map(item => (
-                            <Button key={item.label} className="!text-amber-50" onClick={() => navigate(item.path)}>
-                            {item.label}
-                            </Button>
-                        ))}
-                        {loggedIn ? (
-                            <Button
-                            variant="outlined"
-                            className="!text-amber-50"
-                            startIcon={<LogoutIcon />}
-                            onClick={(event) => setMenuOpen(event.currentTarget)}
-                            >
-                            {inputname}
-                            </Button>
-                        ) : (
-                            <Button
-                            className="!text-amber-50"
-                            startIcon={<AccountCircleIcon />}
-                            onClick={() => setOpen(true)}
-                            >
-                            Login
-                            </Button>
-                        )}
-                        </div>
-                    )}
-                    </Toolbar>
-                </AppBar>
-
-                {/* Drawer for mobile */}
-                <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                    <List sx={{ width: 220 }}>
-                    {menuItems.map(item => (
-                        <ListItem button key={item.label} onClick={() => { navigate(item.path); setDrawerOpen(false); }}>
-                        <ListItemText primary={item.label} />
-                        </ListItem>
-                    ))}
-                    {loggedIn ? (
-                        <>
-                        <ListItem button onClick={handlemenuClose1}><ListItemText primary="Edit Info" /></ListItem>
-                        <ListItem button onClick={handlemenuClose2}><ListItemText primary="History" /></ListItem>
-                        <ListItem button onClick={handlemenuClose3}><ListItemText primary="Logout" /></ListItem>
-                        </>
-                    ) : (
-                        <ListItem button onClick={() => { setOpen(true); setDrawerOpen(false); }}>
-                        <ListItemText primary="Login" />
-                        </ListItem>
-                    )}
-                    </List>
-                </Drawer>
+                > Login </Button>}
                 <Menu
                     open={Boolean(menuOpen)}
                     anchorEl={menuOpen}
@@ -312,7 +258,7 @@ function Navbar({inputname, onSetAccount, onSetName}) {
                     <Button onClick={handleRegister}>{(login)? 'Login' : 'Register'}</Button>
                     </DialogActions>
                 </Dialog>
-            {/* </div> */}
+            </div>
         </>
     )
 }

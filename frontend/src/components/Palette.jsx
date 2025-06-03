@@ -1,9 +1,9 @@
 import ColorToggleSelect from "./ColorChoose.jsx";
-import { Button, Box, Alert, Collapse, CircularProgress, Tooltip } from "@mui/material";
-import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { useState, useCallback } from "react";
-import PaletteIcon from '@mui/icons-material/Palette';
 
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import PaletteIcon from '@mui/icons-material/Palette';
+import { Button, Box, Alert, Collapse, CircularProgress, Tooltip } from "@mui/material";
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
